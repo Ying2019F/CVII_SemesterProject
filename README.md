@@ -35,6 +35,43 @@ Sample running on validation image:
 
 
 ## YOLO Usage: 
+Navigate to the cluster directory 
+
+    cd Yolov3
+
+**Requirements**: 
+Use Python 3.7, requirements.txt file includes all the packages required.
+
+Weights and data are in google drive.
+Data folder has data for all 3 cases - 
+ - training on mobile images, testing on webcam images (Sensor1vsSensor2)
+ - training on layout 1 images, testing on layout 2 images (Layout1vsLayout2)
+ - training on top angle images, testing on side angle images (TopvsSide)
+
+ unzip these folders and move the train.txt file, val.txt file, images folder to the data folder.
+
+**Training**:
+
+    python3 train.py --cfg cfg/yolov3.cfg --data data/yolo.data --weights weights/best_mobile_500.pt
+
+training requires the training images in path /data/images/.. and train.txt and val.txt in path /data/..
+
+**Testing**:
+
+    python3 detect.py --weights weights/best_mobile_500.pt --source data/test_webcam_images
+
+**Validation Testing**:
+
+    python3 detect.py --weights weights/best_mobile_500.pt --source data/validation
+
+Sample running on test image: 
+
+<p align="center"> <img src="test4.JPG" width="400" height="350"/> </p>
+
+Sample running on validation image: 
+
+<p align="center"> <img src="Validation.jpg" width="400" height="300"/> </p>
+
 
 ## SSD Usage: 
 
