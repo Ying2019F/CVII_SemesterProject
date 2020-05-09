@@ -38,9 +38,9 @@ Sample running on validation image:
 
 ## SSD Usage: 
 
-# Sample image detected
+#A sample tote image was detected
 
-<p align="center"> <img src="Sample ToteImage_detected.jpg" width="300" height="240"/> </p>
+<p align="center"> <img src="Sample ToteImage_detected.jpg" width="400" height="320"/> </p>
 #install Caffe
 
 details can be found on https://github.com/weiliu89/caffe
