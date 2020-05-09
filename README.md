@@ -31,7 +31,8 @@ Sample running on test image:
 
 Sample running on validation image: 
 
-<p align="center"> <img src="splash_20200508T211952.png" width="400" height="300"/> </p>
+<p align="center"> <img src="96422398_276259940079522_8946705619629375488_n.png" width="400" height="300"/> </p>
+
 
 ## YOLO Usage: 
 
