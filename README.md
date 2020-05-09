@@ -13,8 +13,8 @@ Navigate to the cluster directory
     cd Mask_RCNN/samples/cluster/
     
 For Predicting on a new image: 
-<p align="center"> <img src="pipeline.png"/> </p>
-<p align="center"> <img src="pipeline.png"/> </p>
+<p align="center"> <img src="splash_20200508T205239.png"/> </p>
+<p align="center"> <img src="splash_20200508T211952.png"/> </p>
 ## YOLO Usage: 
 ## SSD Usage: 
 # 3. Consent to forward to Amazon Robotics
