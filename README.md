@@ -13,6 +13,15 @@ Navigate to the cluster directory
     cd Mask_RCNN/samples/cluster/
     
 For Predicting on a new image: 
+Use 'Python3.7' and download requirements from requirements.txt
+
+Weights and images included in google drive :) 
+
+Easiest way would be to use the jupyter notebook in cluster! 
+
+Example usage:
+
+    python3.7 samples/cluster/cluster.py splash --weights='mask_rcnn_object_0099.h5' --image='LAYOUT2_PL2_WEBCAM_TOP_Photo_on_1-27-20_at_3.06_PM.jpg'
 
 Sample running on test image: 
 
