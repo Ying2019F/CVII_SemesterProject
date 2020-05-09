@@ -40,8 +40,13 @@ Follow the Pascal VOC dataset format to prepare the input dataset.
 3. Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
 
 #Training and evaluation
+
 1. Run ssd_pascal_orig.py to train the model
 2. Run score_ssd_pascal.py to evaluate the model
+
+#Visualization
+
+To run ssd_amazon_detect.ipynb to do the detection on a single tote image
 
 
 
