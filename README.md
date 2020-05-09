@@ -37,6 +37,10 @@ Sample running on validation image:
 ## YOLO Usage: 
 
 ## SSD Usage: 
+
+# Sample image detected
+
+<p align="center"> <img src="Sample ToteImage_detected.jpg" width="300" height="240"/> </p>
 #install Caffe
 
 details can be found on https://github.com/weiliu89/caffe
@@ -60,9 +64,11 @@ Follow the Pascal VOC dataset format to prepare the input dataset.
 
 To run ssd_amazon_detect.ipynb to do the detection on a single tote image
 
-# 3. Consent to forward to Amazon Robotics
 
-We are unsure if it is worth it! xD 
+
+
+
+# 3. Consent to forward to Amazon Robotics
 # 4. For Groups: 
   * Mask-RCNN: Sophia Abraham 
   * YOLO: Bhakti Sharma 
