@@ -1,28 +1,20 @@
 """
 Mask R-CNN
 Train on the custom tote dataset and implement color splash effect.
-
 Copyright (c) 2018 Matterport, Inc.
 Licensed under the MIT License (see LICENSE for details)
 Written by Waleed Abdulla
-
 ------------------------------------------------------------
-
 Usage: import the module (see Jupyter notebooks for examples), or run from
        the command line as such:
-
     # Train a new model starting from pre-trained COCO weights
     python3 balloon.py train --dataset=/path/to/balloon/dataset --weights=coco
-
     # Resume training a model that you had trained earlier
     python3 balloon.py train --dataset=/path/to/balloon/dataset --weights=last
-
     # Train a new model starting from ImageNet weights
     python3 balloon.py train --dataset=/path/to/balloon/dataset --weights=imagenet
-
     # Apply color splash to an image
     python3 balloon.py splash --weights=/path/to/weights/file.h5 --image=<URL or path to file>
-
     # Apply color splash to video using the last weights you trained
     python3 balloon.py splash --weights=last --video=<URL or path to file>
 """
@@ -82,18 +74,23 @@ class CustomConfig(Config):
 
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
+    #IMAGES_PER_GPU = 4
     IMAGES_PER_GPU = 1
+    #IMAGES_PER_GPU = 2
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 11  # Background + Objects Classes
 
     # Number of training steps per epoch
-    STEPS_PER_EPOCH = 70
+    #STEPS_PER_EPOCH = 70
+    #VALIDATION_STEPS = 18
+    STEPS_PER_EPOCH = 1
+    VALIDATION_STEPS = 1
 
     # Skip detections with < 90% confidence
-    DETECTION_MIN_CONFIDENCE = 0.5
+    DETECTION_MIN_CONFIDENCE = 0.6
 
-    # Dont Resize for Inferencing 
+    # Dont Resize for Inferencing
     # IMAGE_RESIZE_MODE = "pad64"
 
 
@@ -113,9 +110,9 @@ class CustomDataset(utils.Dataset):
             self.add_class('object', i, CLASSES[i-1])
 
         # Train or validation dataset?
-        assert subset in ["train", "val", "test"]
+        assert subset in ["train", "val"]
         dataset_dir = os.path.join(dataset_dir, subset)
-        
+
         p = os.path.join(dataset_dir, 'images')
         for fname in os.listdir(p):
             image_path = os.path.join(p, fname)
@@ -196,46 +193,93 @@ def train(model):
     # Since we're using a very small dataset, and starting from
     # COCO trained weights, we don't need to train too long. Also,
     # no need to train all layers, just the heads should do it.
-    augmentation = iaa.Sequential([
-    iaa.Fliplr(0.5), # horizontal flips
-    iaa.Flipud(0.5),
-    # Scale/zoom them, translate/move them, rotate them and shear them.
-    iaa.Affine(
-        translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)},
-        rotate=(-25, 25),
-    )
-], random_order=True) # apply augmenters in random order
+    augmentation = iaa.SomeOf((0, 2), [
+        iaa.Fliplr(0.5),
+        iaa.Flipud(0.5),
+        iaa.OneOf([iaa.Affine(rotate=90),
+                   iaa.Affine(rotate=180),
+                   iaa.Affine(rotate=270)])#,
+        #iaa.Multiply((0.8, 1.5))
+    ])
+
     # augmentation = imageaug.augmenters.Fliplr(0.5)
     print("Training network heads")
     history = model.train(dataset_train, dataset_val,
-            learning_rate=config.LEARNING_RATE,
-            epochs=50,
-            augmentation=augmentation,
-            layers='heads')
-    return history.history['val_loss']
-    # model.train(dataset_train, dataset_val, 
-    #         learning_rate=config.LEARNING_RATE/10,
-    #         epochs=80,
-    #         augmentation=augmentation, 
-    #         layers="all")
+                #learning_rate=config.LEARNING_RATE*2,
+                learning_rate=config.LEARNING_RATE,
+                #epochs=1000,
+                epochs=100,
+                layers='heads',
+                augmentation=augmentation)
+    #print(history.history)
+    #print(history.history['val_loss'])
+    # For Hyperoprt
+    #last_val_loss = history.history['val_loss'][-1]
+    min_val_loss = min(history.history['val_loss'])
+    return min_val_loss
 
-def color_splash(image, mask):
+def color_splash(image, mask, clss, scores):
     """Apply color splash effect.
     image: RGB image [height, width, 3]
     mask: instance segmentation mask [height, width, instance count]
-
     Returns result image.
     """
+    colors = [
+        (255,0,0),
+        (255,215,0),
+         	(124,252,0),
+                 	(0,255,255),
+                        (127,255,212),
+                        (138,43,226),
+                         	(160,82,45),
+                                (255,0,255),
+                                 	(255,140,0),
+                                         	(143,188,143),
+    ]
+
+    def minmax_wh(poly):
+        wmin = hmin = float('+inf')
+        wmax = hmax = float('-inf')
+        for (w, h) in poly:
+            wmin = min(wmin, w)
+            wmax = max(wmax, w)
+            hmin = min(hmin, h)
+            hmax = max(hmax, h)
+        return wmax, wmin, hmax, hmin
+
     # Make a grayscale copy of the image. The grayscale copy still
     # has 3 RGB channels, though.
     gray = skimage.color.gray2rgb(skimage.color.rgb2gray(image)) * 255
     # Copy color pixels from the original color image where mask is set
     if mask.shape[-1] > 0:
         # We're treating all instances as one, so collapse the mask into one layer
+        mask1 = mask.copy()
+
         mask = (np.sum(mask, -1, keepdims=True) >= 1)
         splash = np.where(mask, image, gray).astype(np.uint8)
+        print(mask1.shape, image.shape, gray.shape)
+        for i, cls in zip(range(mask1.shape[-1]), clss):
+            cls = cls - 1
+            #color = np.ones(3) * cls / 10 * 255
+            color = colors[cls]
+            m_i = mask1[:, :, i]
+            print(m_i.shape)
+            wx, wi, hx, hi = minmax_wh(list(zip(*np.where(m_i))))
+            splash[wx, hi:hx] = color
+            splash[wi, hi:hx] = color
+            splash[wi:wx, hi] = color
+            splash[wi:wx, hx] = color
+            cls_str = CLASSES[cls] + ' [score={}]'.format(scores[i])
+            splash = cv2.putText(
+                img=np.copy(splash), text=cls_str,
+                org=(hi, wi+6), fontFace=2, fontScale=.29, color=color,
+                thickness=1
+            )
     else:
         splash = gray.astype(np.uint8)
+
+    #for m in mask:
+
     return splash
 
 
@@ -251,7 +295,8 @@ def detect_and_color_splash(model, image_path=None, video_path=None):
         # Detect objects
         r = model.detect([image], verbose=1)[0]
         # Color splash
-        splash = color_splash(image, r['masks'])
+        splash = color_splash(image, r['masks'], r['class_ids'], r['scores'])
+        print(r.keys())
         # Save output
         file_name = "splash_{:%Y%m%dT%H%M%S}.png".format(datetime.datetime.now())
         skimage.io.imsave(file_name, splash)
@@ -308,16 +353,16 @@ def find_hyperparams(logs):
         config = create_config(args)
         model = modellib.MaskRCNN(mode="training", config=config, model_dir=logs)
         history = train(model)
-        return history[-1]
+        return history
 
 
     space = {
-        'LEARNING_RATE': 1 + hp.lognormal('LEARNING_RATE', 1E-4, 1E-2),
+        'LEARNING_RATE': 1 + hp.lognormal('LEARNING_RATE', 1E-5, 1E-2),
         'LEARNING_MOMENTUM': hp.uniform('LEARNING_MOMENTUM', 1E-4, 1),
         'WEIGHT_DECAY': hp.lognormal('WEIGHT_DECAY', 1E-5, 1E-3)
         }
 
-    best = fmin(objective, space, algo=tpe.suggest, max_evals=20)
+    best = fmin(objective, space, algo=tpe.suggest, max_evals=50)
     config = create_config(best)
     return config
 
