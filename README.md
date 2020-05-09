@@ -13,7 +13,13 @@ Navigate to the cluster directory
     cd Mask_RCNN/samples/cluster/
     
 For Predicting on a new image: 
+
+Sample running on test image: 
+
 <p align="center"> <img src="splash_20200508T205239.png" width="400" height="350"/> </p>
+
+Sample running on validation image: 
+
 <p align="center"> <img src="splash_20200508T211952.png" width="400" height="300"/> </p>
 
 ## YOLO Usage: 
