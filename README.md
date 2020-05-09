@@ -26,12 +26,15 @@ Sample running on validation image:
 
 ## SSD Usage: 
 #install Caffe
+
 details can be found on https://github.com/weiliu89/caffe
 
 #Train SSD
+
 Follow the Pascal VOC dataset format to prepare the input dataset.
 
 #Generate LMDB file
+
 1. Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
 2. Modify labelmap_amazon.prototxt 
 3. Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
