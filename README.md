@@ -40,7 +40,8 @@ Sample running on validation image:
 
 #A sample tote image was detected
 
-<p align="center"> <img src="Sample ToteImage_detected.jpg" width="400" height="320"/> </p>
+<p align="center"> <img src="Sample ToteImage_detected.jpg" width="600" height="480"/> </p>
+
 #install Caffe
 
 details can be found on https://github.com/weiliu89/caffe
