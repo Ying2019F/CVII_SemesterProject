@@ -1,7 +1,9 @@
 Detecting Objects in a Dense Clutter 
 =========================================
 # 1. A report (as a "readme")
-Report has been included as a pdf file in the repository here: 
+Report has been included as a pdf file in the repository here
+
+Google drive for images and weights: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
 # 2. Current version of programs with instructions on how to run them: 
 ## Mask-RCNN Usage: 
 Download the project
