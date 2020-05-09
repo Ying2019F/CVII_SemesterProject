@@ -60,11 +60,9 @@ Follow the Pascal VOC dataset format to prepare the input dataset.
 
 To run ssd_amazon_detect.ipynb to do the detection on a single tote image
 
-
-
-
-
 # 3. Consent to forward to Amazon Robotics
+
+We are unsure if it is worth it! xD 
 # 4. For Groups: 
   * Mask-RCNN: Sophia Abraham 
   * YOLO: Bhakti Sharma 
