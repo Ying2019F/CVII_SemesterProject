@@ -1,0 +1,55 @@
+item {
+  name: "none_of_the_above"
+  label: 0
+  display_name: "background"
+}
+item {
+  name: "plush duck"
+  label: 1
+  display_name: "plush duck"
+}
+item {
+  name: "rubber duck"
+  label: 2
+  display_name: "rubber duck"
+}
+item {
+  name: "book"
+  label: 3
+  display_name: "book"
+}
+item {
+  name: "tennis ball"
+  label: 4
+  display_name: "tennis ball"
+}
+item {
+  name: "cookie tin"
+  label: 5
+  display_name: "cookie tin"
+}
+item {
+  name: "ping pong paddle"
+  label: 6
+  display_name: "ping pong paddle"
+}
+item {
+  name: "amazon"
+  label: 7
+  display_name: "amazon"
+}
+item {
+  name: "heart box"
+  label: 8
+  display_name: "heart box"
+}
+item {
+  name: "remote"
+  label: 9
+  display_name: "remote"
+}
+item {
+  name: "toy"
+  label: 10
+  display_name: "toy"
+}
