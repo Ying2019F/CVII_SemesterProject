@@ -80,14 +80,21 @@ Sample running on validation image:
 <p align="center"> <img src="Sample ToteImage_detected.jpg" width="600" height="480"/> </p>
 
 ### Requirements
+For training
+python/2.7.15 cuda/10.0 cudnn/7.4 opencv/3.4 intel/19.0 tcl/8.6.8 gcc/8.3.0 hdf5/1.8.20-gcc mkl
+
+For detection
+caffe version: 1.0.0-rc3
+
+Input datasets and trained models are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
 
 ### Install Caffe
-
-details can be found on https://github.com/weiliu89/caffe
+Dependencies for installing Caffe are listed here https://caffe.berkeleyvision.org/installation.html#prerequisites
+Details can be found on https://github.com/weiliu89/caffe
 
 ### Train SSD
 
-Follow the Pascal VOC dataset format to prepare the input dataset.
+Follow the Pascal VOC dataset format to prepare the input dataset (available here https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing).
 
 ### Generate LMDB file
 
