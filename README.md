@@ -75,30 +75,32 @@ Sample running on validation image:
 
 ## SSD Usage: 
 
-# A sample tote image was detected
+### A sample tote image was detected
 
 <p align="center"> <img src="Sample ToteImage_detected.jpg" width="600" height="480"/> </p>
 
-# install Caffe
+### Requirements
+
+### Install Caffe
 
 details can be found on https://github.com/weiliu89/caffe
 
-# Train SSD
+### Train SSD
 
 Follow the Pascal VOC dataset format to prepare the input dataset.
 
-# Generate LMDB file
+### Generate LMDB file
 
 1. Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
 2. Modify labelmap_amazon.prototxt 
 3. Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
 
-#Training and evaluation
+### Training and evaluation
 
 1. Run ssd_pascal_orig.py to train the model
 2. Run score_ssd_pascal.py to evaluate the model
 
-# Visualization
+### Visualization
 
 To run ssd_amazon_detect.ipynb to do the detection on a single tote image
 
