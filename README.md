@@ -93,7 +93,9 @@ caffe version: 1.0.0-rc3
 Input datasets and trained models are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
 
 ### Install Caffe
+
 Dependencies for installing Caffe are listed here https://caffe.berkeleyvision.org/installation.html#prerequisites
+
 Details can be found on https://github.com/weiliu89/caffe
 
 ### Dataset preparation
@@ -103,8 +105,11 @@ Details can be found on https://github.com/weiliu89/caffe
 2. Generate LMDB file
 
 (1) Create trainval.txt (including the image index for training and validation) and test.txt (including the image index for testing)
+
 (2) Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
+
 (3) Modify labelmap_amazon.prototxt 
+
 (4) Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
 
 ### Training and evaluation
