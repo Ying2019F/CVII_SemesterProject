@@ -96,15 +96,16 @@ Input datasets and trained models are available on this google drive link: https
 Dependencies for installing Caffe are listed here https://caffe.berkeleyvision.org/installation.html#prerequisites
 Details can be found on https://github.com/weiliu89/caffe
 
-### Train SSD
+### Dataset preparation
 
-Follow the Pascal VOC dataset format to prepare the input dataset (available here https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing).
+1. Follow the Pascal VOC dataset format to prepare the input dataset (available here https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing).
 
-### Generate LMDB file
+2. Generate LMDB file
 
-1. Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
-2. Modify labelmap_amazon.prototxt 
-3. Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
+(1) Create trainval.txt (including the image index for training and validation) and test.txt (including the image index for testing)
+(2) Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
+(3) Modify labelmap_amazon.prototxt 
+(4) Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
 
 ### Training and evaluation
 
@@ -112,8 +113,9 @@ Follow the Pascal VOC dataset format to prepare the input dataset (available her
 2. python score_ssd_pascal.py to evaluate the model
 
 ### Visualization
-
-To run ssd_amazon_detect.ipynb to do the detection on a single tote image
+1. install caffe
+2. download input dataset and pretrained models
+3. To run ssd_amazon_detect.ipynb to do the detection on a single tote image
 
 # 4. For Groups: 
   * Mask-RCNN: Sophia Abraham 
