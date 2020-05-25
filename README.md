@@ -75,9 +75,13 @@ Sample running on validation image:
 
 ## SSD Usage: 
 
-### A sample tote image was detected
+### A webcam tote image was detected
 
-<p align="center"> <img src="Sample ToteImage_detected.jpg" width="600" height="480"/> </p>
+<p align="center"> <img src="Webcam_tote_detected.jpg" width="600" height="480"/> </p>
+
+### An Iphone tote image was detected
+
+<p align="center"> <img src="Iphone_tote_detected.jpg" width="600" height="480"/> </p>
 
 ### Requirements
 For training
