@@ -108,8 +108,8 @@ Follow the Pascal VOC dataset format to prepare the input dataset (available her
 
 ### Training and evaluation
 
-1. Run ssd_pascal_orig.py to train the model
-2. Run score_ssd_pascal.py to evaluate the model
+1. python ssd_pascal_orig.py to train the model
+2. python score_ssd_pascal.py to evaluate the model
 
 ### Visualization
 
