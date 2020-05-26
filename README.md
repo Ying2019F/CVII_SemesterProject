@@ -1,5 +1,9 @@
 Detecting Objects in a Dense Clutter 
 =========================================
+### NOTE: This is a course project for Computer Vision II at University of Notre Dame for 2020 Spring semester
+  - Class code: CSE 40536/60536
+  - the syllabus: http://adamczajka.pl/files/Computer-Vision-2-syllabus.pdf 
+
 # 1. A report (as a "readme")
 Report has been included as a pdf file in the repository here
 
