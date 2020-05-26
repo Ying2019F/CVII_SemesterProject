@@ -85,22 +85,58 @@ Sample running on validation image:
 
 ### Requirements
 For training
-python/2.7.15 cuda/10.0 cudnn/7.4 opencv/3.4 intel/19.0 tcl/8.6.8 gcc/8.3.0 hdf5/1.8.20-gcc mkl
+python/2.7.15 
+
+cuda/10.0 
+
+cudnn/7.4 
+
+opencv/3.4 
+
+intel/19.0 
+
+tcl/8.6.8 
+
+gcc/8.3.0 
+
+hdf5/1.8.20-gcc 
+
+mkl
 
 For detection
 caffe version: 1.0.0-rc3
 
-Input datasets and trained models are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
+Input datasets and trained models (weights) are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
 
-### Install Caffe
+### For the sample datasets
+
+1. Install Caffe (version: 1.0.0-rc3)
+
+2. Download input datasets and trained models (weights)from the google drive
+
+3. Download labelmap_amazon.prototxt and deploy.prototxt from this github/SSD
+
+4. Make corresponding modifications on the path in ssd_amazon_detect.ipynb
+
+  - labelmap_file = 'data/amazon/labelmap_amazon.prototxt'
+
+  - model_def = 'models/VGGNet/amazon/SSD_300x300_orig/deploy.prototxt'
+
+  - model_weights = 'models/VGGNet/amazon/SSD_300x300_orig/VGG_amazon_SSD_300x300_orig_iter_8000.caffemodel'
+
+  - image = caffe.io.load_image('examples/images/IMG_5165.jpg')
+
+
+### For customized datasets
+#### Install Caffe
 
 Dependencies for installing Caffe are listed here https://caffe.berkeleyvision.org/installation.html#prerequisites
 
 Details can be found on https://github.com/weiliu89/caffe
 
-### Dataset preparation
+#### Dataset preparation
 
-1. Follow the Pascal VOC dataset format to prepare the input dataset (available here https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing).
+1. Follow the Pascal VOC dataset format to prepare the customized dataset (instructions can be found here https://medium.com/deepquestai/object-detection-training-preparing-your-custom-dataset-6248679f0d1d).
 
 2. Generate LMDB file
 
