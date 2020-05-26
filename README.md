@@ -27,11 +27,11 @@ Example usage:
 
 Sample running on test image: 
 
-<p align="center"> <img src="splash_20200508T205239.png" width="400" height="350"/> </p>
+<p align="center"> <img src="figures/splash_20200508T205239.png" width="400" height="350"/> </p>
 
 Sample running on validation image: 
 
-<p align="center"> <img src="96422398_276259940079522_8946705619629375488_n.png" width="400" height="300"/> </p>
+<p align="center"> <img src="figures/96422398_276259940079522_8946705619629375488_n.png" width="400" height="300"/> </p>
 
 
 ## YOLO Usage: 
@@ -66,22 +66,22 @@ training requires the training images in path /data/images/.. and train.txt and 
 
 Sample running on test image: 
 
-<p align="center"> <img src="test4.JPG" width="400" height="350"/> </p>
+<p align="center"> <img src="figures/test4.JPG" width="400" height="350"/> </p>
 
 Sample running on validation image: 
 
-<p align="center"> <img src="Validation.jpg" width="400" height="300"/> </p>
+<p align="center"> <img src="figures/Validation.jpg" width="400" height="300"/> </p>
 
 
 ## SSD Usage: 
 
 ### A webcam tote image was detected
 
-<p align="center"> <img src="Webcam_tote_detected.jpg" width="600" height="480"/> </p>
+<p align="center"> <img src="figures/Webcam_tote_detected.jpg" width="600" height="480"/> </p>
 
 ### An Iphone tote image was detected
 
-<p align="center"> <img src="Iphone_tote_detected.jpg" width="600" height="480"/> </p>
+<p align="center"> <img src="figures/Iphone_tote_detected.jpg" width="600" height="480"/> </p>
 
 ### Requirements
 For training
@@ -147,8 +147,3 @@ Details can be found on https://github.com/weiliu89/caffe
 1. install caffe
 2. download input dataset and pretrained models
 3. To run ssd_amazon_detect.ipynb to do the detection on a single tote image
-
-# 4. For Groups: 
-  * Mask-RCNN: Sophia Abraham 
-  * YOLO: Bhakti Sharma 
-  * SSD: Ying Qiu 
