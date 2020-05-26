@@ -85,28 +85,19 @@ Sample running on validation image:
 
 ### Requirements
 For training
-python/2.7.15 
-
-cuda/10.0 
-
-cudnn/7.4 
-
-opencv/3.4 
-
-intel/19.0 
-
-tcl/8.6.8 
-
-gcc/8.3.0 
-
-hdf5/1.8.20-gcc 
-
-mkl
+  - python/2.7.15 
+  - cuda/10.0 
+  - cudnn/7.4 
+  - opencv/3.4 
+  - intel/19.0 
+  - tcl/8.6.8 
+  - gcc/8.3.0 
+  - hdf5/1.8.20-gcc 
+  - mkl
 
 For detection
-caffe version: 1.0.0-rc3
-
-Input datasets and trained models (weights) are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
+  - caffe version: 1.0.0-rc3
+  - Input datasets and trained models (weights) are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
 
 ### For the sample datasets
 
@@ -140,13 +131,10 @@ Details can be found on https://github.com/weiliu89/caffe
 
 2. Generate LMDB file
 
-(1) Create trainval.txt (including the image index for training and validation) and test.txt (including the image index for testing)
-
-(2) Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
-
-(3) Modify labelmap_amazon.prototxt 
-
-(4) Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
+  - Create trainval.txt (including the image index for training and validation) and test.txt (including the image index for testing)
+  - Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
+  - Modify labelmap_amazon.prototxt 
+  - Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
 
 ### Training and evaluation
 
