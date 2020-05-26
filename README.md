@@ -99,13 +99,15 @@ For detection
   - caffe version: 1.0.0-rc3
   - Input datasets and trained models (weights) are available on this google drive link: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
 
+More details can be found here (https://github.com/Ying2019F/CVII_SemesterProject/tree/master/SSD/environment.yaml)
+
 ### For the sample datasets
 
 1. Install Caffe (version: 1.0.0-rc3)
 
 2. Download input datasets and trained models (weights)from the google drive
 
-3. Download labelmap_amazon.prototxt and deploy.prototxt from this github/SSD
+3. Download labelmap_amazon.prototxt and deploy.prototxt from here ( https://github.com/Ying2019F/CVII_SemesterProject/tree/master/SSD)
 
 4. Make corresponding modifications on the path in ssd_amazon_detect.ipynb
 
