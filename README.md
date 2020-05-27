@@ -85,7 +85,7 @@ Sample running on validation image:
 
 ### An Iphone tote image was detected
 
-<p align="center"> <img src="figures/Iphone_tote_detected.jpg" width="600" height="480"/> </p>
+<p align="center"> <img src="figures/Iphone_tote_detected.jpg" width="800" height="640"/> </p>
 
 ### Requirements
 For training
