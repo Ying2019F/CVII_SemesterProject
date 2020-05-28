@@ -113,15 +113,11 @@ More details can be found here (https://github.com/Ying2019F/CVII_SemesterProjec
       - git clone https://github.com/weiliu89/caffe.git
       - cd caffe
       - git checkout ssd
-      
-      Modify Makefile.config according to your Caffe installation.
-      - cp Makefile.config.example Makefile.config
+      - cp Makefile.config.example Makefile.config (Modify Makefile.config according to your Caffe installation.)
       - make -j8
-      Make sure to include $CAFFE_ROOT/python to your PYTHONPATH.
-      - make py
+      - make py ( Make sure to include $CAFFE_ROOT/python to your PYTHONPATH.)
       - make test -j8
-      (Optional)
-      - make runtest -j8
+      - make runtest -j8 (Optional)
 
 2. Download input datasets and trained models (weights)from the google drive
 
