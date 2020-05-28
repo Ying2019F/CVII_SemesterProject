@@ -113,7 +113,8 @@ More details can be found here (https://github.com/Ying2019F/CVII_SemesterProjec
       - git clone https://github.com/weiliu89/caffe.git
       - cd caffe
       - git checkout ssd
-      - cp Makefile.config.example Makefile.config (Modify Makefile.config according to your Caffe installation.)
+      - cp Makefile.config.example Makefile.config (Modify Makefile.config according to your Caffe installation. My         Makefile.config is available in SSD folder)
+      - make clean
       - make -j8
       - make py ( Make sure to include $CAFFE_ROOT/python to your PYTHONPATH.)
       - make test -j8
@@ -125,13 +126,13 @@ More details can be found here (https://github.com/Ying2019F/CVII_SemesterProjec
 
 4. Make corresponding modifications on the path in ssd_amazon_detect.ipynb
 
-  - labelmap_file = 'data/amazon/labelmap_amazon.prototxt'
+    - labelmap_file = 'data/amazon/labelmap_amazon.prototxt'
 
-  - model_def = 'models/VGGNet/amazon/SSD_300x300_orig/deploy.prototxt'
+    - model_def = 'models/VGGNet/amazon/SSD_300x300_orig/deploy.prototxt'
 
-  - model_weights = 'models/VGGNet/amazon/SSD_300x300_orig/VGG_amazon_SSD_300x300_orig_iter_8000.caffemodel'
+    - model_weights = 'models/VGGNet/amazon/SSD_300x300_orig/VGG_amazon_SSD_300x300_orig_iter_8000.caffemodel'
 
-  - image = caffe.io.load_image('examples/images/IMG_5165.jpg')
+    - image = caffe.io.load_image('examples/images/IMG_5165.jpg')
 
 
 ### For customized datasets
@@ -147,17 +148,26 @@ Details can be found on https://github.com/weiliu89/caffe
 
 2. Generate LMDB file
 
-  - Create trainval.txt (including the image index for training and validation) and test.txt (including the image index for testing)
-  - Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
-  - Modify labelmap_amazon.prototxt 
-  - Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
+    - Create trainval.txt (including the image index for training and validation) and test.txt (including the image index for testing)
+    - Run create_list.sh to generate test_name_size.txt, test.txt, and trainval.txt in data/amazon/
+    - Modify labelmap_amazon.prototxt 
+    - Run create_data.sh to create LMDB database and make a soft link in examples/amazon/
 
 ### Training and evaluation
 
 1. python ssd_pascal_orig.py to train the model
 2. python score_ssd_pascal.py to evaluate the model
 
+NOte: For this project, different training schemes were implemented. There are two trained models in the google drive, including webcam model and Iphone model. The webcam model was trained on the images collected by webcam (Logitech, webcam c615) and Iphone model was trained on the images collected by Iphone.
 ### Visualization
 1. install caffe
 2. download input dataset and pretrained models
 3. To run ssd_amazon_detect.ipynb to do the detection on a single tote image
+### Evaluation of SSD on detecting objects in a dense clutter
+Pros:
+    - Achieved high accuracy when the detection scenario (object size and layout) was similar to the training scenario.
+    - Low requirement on training datasize, decent results can be obtained with even several training images.
+Cons: 
+    - Complicated to install Caffe.
+    - Low accuracy on new detection scenario.
+    - Bad detections when the target object has similar color or pattern with the unrelated object.
