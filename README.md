@@ -109,6 +109,20 @@ More details can be found here (https://github.com/Ying2019F/CVII_SemesterProjec
 
 1. Install Caffe (version: 1.0.0-rc3)
 
+   follow the installation steps on this github (https://github.com/weiliu89/caffe/tree/ssd)
+      - git clone https://github.com/weiliu89/caffe.git
+      - cd caffe
+      - git checkout ssd
+      
+      # Modify Makefile.config according to your Caffe installation.
+      - cp Makefile.config.example Makefile.config
+      - make -j8
+      # Make sure to include $CAFFE_ROOT/python to your PYTHONPATH.
+      - make py
+      - make test -j8
+      # (Optional)
+      - make runtest -j8
+
 2. Download input datasets and trained models (weights)from the google drive
 
 3. Download labelmap_amazon.prototxt and deploy.prototxt from here ( https://github.com/Ying2019F/CVII_SemesterProject/tree/master/SSD)
