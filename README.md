@@ -166,10 +166,10 @@ NOte: For this project, different training schemes were implemented. There are t
 ### Evaluation of SSD on detecting objects in a dense clutter
 
   Pros:
-      - Achieved high accuracy when the detection scenario (object size and layout) was similar to the training scenario.
-      - Low requirement on training datasize, decent results can be obtained with even several training images.
+      - Achieved high accuracy when the detection scenario (object size and layout) was similar to the training scenario
+      - Low requirement on training datasize, decent results can be obtained with even several training images
 
   Cons: 
-      - Complicated to install Caffe.
-      - Low accuracy on new detection scenario.
-      - Bad detections when the target object has similar color or pattern with the unrelated object.
+      - Complicated to install Caffe
+      - Low accuracy on new detection scenario
+      - Bad detections when the target object has similar color or pattern with the unrelated object
