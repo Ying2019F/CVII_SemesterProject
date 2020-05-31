@@ -1,33 +1,67 @@
 Detecting Objects in a Dense Clutter 
 =========================================
 ### NOTE: This is a course project for Computer Vision II at University of Notre Dame for 2020 Spring semester
+  - Instructor: Dr. Adam Czajka (the absolute best! :D) 
   - Class code: CSE 40536/60536
-  - the syllabus: http://adamczajka.pl/files/Computer-Vision-2-syllabus.pdf 
+  - Syllabus: http://adamczajka.pl/files/Computer-Vision-2-syllabus.pdf 
   
 This project aims to visually identify objects within a dense clutter. Specifically, 10 individual objects (target objects) with different sizes, shapes, colors, textures, and material composites placed in a plastic tote, with some irrelevant items mixed in with the target objects. Various lighting conditions, data collection sensors (i.e., low quality webcam, high quality iPhone camera), and varied image capture angles incorporated additional everyday challenges to consider for this detection task.
 
-For further details, consult the includedproject report: [Report](Object_detection_in_a_dense_clutter_FinalReport.pdf)
+For further details, consult the included project report: [Report](Object_detection_in_a_dense_clutter_FinalReport.pdf)
 
-# 1. A report (as a "readme")
-Report has been included as a pdf file in the repository here
+> _“Two heads are better than one, not because either is infallible, but because they are unlikely to go wrong in the same direction.”_ - C.S. Lewis 
 
-Google drive for images and weights: https://drive.google.com/drive/folders/1O4ad1TXfSJZaml829rID7T84JjUvs4IM?usp=sharing
-# 2. Current version of programs with instructions on how to run them: 
-## Mask-RCNN Usage: 
-Download the project
+Our battle plan for this project was to use the power of multiple models to tackle this challenging problem. Think of the mighty beast **Chimera** of ancient greek mythology with the combined powers of a lion, goat and serpent! We decided our beast would consist of **MaskRCNN**, **YOLOv3** and **Single Shot Detection (SSD)**. Unfortunately, incoporating **SSD** proved to be complex due to difficulties with Caffe, and thus the fusion only consists of **MaskRCNN** and **YOLOV3**. 
+
+![Alt Text](https://1.bp.blogspot.com/-se5YU62bgkM/Uk5Hgt1cFWI/AAAAAAAAWa4/LExl-7czUuM/s1600/ChimeraWalk.gif)
+
+# Instruction for Running the Fusion: 
+```diff
+- NOTE: This is not a fusion of the models, rather a fusion of the detection results. This is done by combining the bounding box results for both YOLOv3 and MaskRCNN and performing non-maximum suppression (NMS) to filter the proposals.
+```
+## Download the project
   
      git clone https://github.com/Ying2019F/CVII_SemesterProject.git
+     
+## Install Requirements for MaskRCNN and YOLOv3: 
+
+**MaskRCNN:** [requirements.txt](Mask_RCNN/samples/cluster/requirements.txt)
+
+**YOLOv3:** [requirements.txt](YOLOv3/requirements.txt)
+
+## Navigate to Fusion directory: 
+```
+cd Fusion/
+```
+## Download weights into the fusion directory: 
+Named `mask_rcnn_object_500.h5` which are the weights for MaskRCNN and `best_mobile_500.pt` for YOLOv3
+## Run fusion detection on an image: 
+```
+python3 fusion.py --source <image name> 
+```
+Where `<image name>` is the path to the image file 
+
+Detection result will appear in directory as `fusionDetection.png`. If you are curious about the result of **YOLOv3** alone, you can see the detection results in the output folder: `output/`. 
+
+## Additional Command Line Options: 
+* `--conf_thres` = Confidence threshold for detections. Default is 0.7 
+* `--iou-thres` = IOU threshold for NMS 
+
+Other options also available in `fusion.py`
+
+**NOTE:** Code was tested in Anaconda virtual environment with `Python 3.6.10`
+
+# Instructions for Running each model separately: 
+## Mask-RCNN Usage: 
 
 Navigate to the cluster directory 
 
     cd Mask_RCNN/samples/cluster/
     
+Download weights from provided google drive link `mask_rcnn_object_500.h5` into the `cluster` directory 
+    
 For Predicting on a new image: 
 Use 'Python3.7' and download requirements from requirements.txt
-
-Weights and images included in google drive :) 
-
-Easiest way would be to use the jupyter notebook in cluster! 
 
 Example usage:
 
