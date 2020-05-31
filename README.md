@@ -6,7 +6,7 @@ Detecting Objects in a Dense Clutter
   
 This project aims to visually identify objects within a dense clutter. Specifically, 10 individual objects (target objects) with different sizes, shapes, colors, textures, and material composites placed in a plastic tote, with some irrelevant items mixed in with the target objects. Various lighting conditions, data collection sensors (i.e., low quality webcam, high quality iPhone camera), and varied image capture angles incorporated additional everyday challenges to consider for this detection task.
 
-For further details, consult the includedproject report: [Report](Object_detection_in_a_dense_clutter_FinalReport.pdf]
+For further details, consult the includedproject report: [Report](Object_detection_in_a_dense_clutter_FinalReport.pdf)
 
 # 1. A report (as a "readme")
 Report has been included as a pdf file in the repository here
