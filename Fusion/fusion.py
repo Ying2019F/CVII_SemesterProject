@@ -250,6 +250,9 @@ def fusion():
     # Convert yolo class labels 
     classes = output['cls']
     cls_res = list(filter(None,classes))
+    cls_res = [[str((j)) for j in i] for i in cls_res]
+    d = {'0':9, '1':1, '2':10, '3':5, '4':3, '5':6, '6':2, '7':8, '8':7, '9':4, '10':11,}
+    cls_res = [[d[j] for j in i] for i in cls_res] 
     cls_res = [[int((j)) for j in i] for i in cls_res]
     cls_res = np.array(cls_res)
     try:
