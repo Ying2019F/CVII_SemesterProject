@@ -278,8 +278,8 @@ def fusion():
 
     #Performing non max suppression for all detections 
     pre_nms_boxes = boxes[keep]
-    pre_nms_classes = roi_scores[keep]
-    pre_nms_scores = np.squeeze(roi_class_names[keep])
+    pre_nms_classes = roi_class_names[keep]
+    pre_nms_scores = np.squeeze(roi_scores[keep])
 
     nms_keep = []
     for class_id in np.unique(pre_nms_classes):
@@ -288,7 +288,7 @@ def fusion():
         # Apply NMS
         class_keep = utils.non_max_suppression(pre_nms_boxes[ixs], 
                                                 pre_nms_scores[ixs],
-                                                CONF_THRESHOLD)
+                                                opt.iou_thres)
         # Map indicies
         class_keep = keep[ixs[class_keep]]
         nms_keep = np.union1d(nms_keep, class_keep)
@@ -321,7 +321,7 @@ if __name__ == '__main__':
     parser.add_argument('--source', type=str, default='data/samples', help='source')  # input file/folder, 0 for webcam
     parser.add_argument('--output', type=str, default='output', help='output folder')  # output folder
     parser.add_argument('--conf_thres', type=float, default=0.7, help='object confidence threshold')
-    parser.add_argument('--iou-thres', type=float, default=0.6, help='IOU threshold for NMS')
+    parser.add_argument('--iou_thres', type=float, default=0.6, help='IOU threshold for NMS')
     parser.add_argument('--img-size', type=int, default=512, help='inference size (pixels)')
     parser.add_argument('--view-img', action='store_true', help='display results')
     parser.add_argument('--save-txt', action='store_true', default=True, help='save results to *.txt')
