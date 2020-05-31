@@ -285,7 +285,7 @@ def fusion():
         # Apply NMS
         class_keep = utils.non_max_suppression(pre_nms_boxes[ixs], 
                                                 pre_nms_scores[ixs],
-                                                config.DETECTION_NMS_THRESHOLD)
+                                                CONF_THRESHOLD)
         # Map indicies
         class_keep = keep[ixs[class_keep]]
         nms_keep = np.union1d(nms_keep, class_keep)
