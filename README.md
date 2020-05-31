@@ -51,6 +51,11 @@ Other options also available in `fusion.py`
 
 **NOTE:** Code was tested in Anaconda virtual environment with `Python 3.6.10`
 
+Example Usage: 
+```
+python3 fusion.py --source LAYOUT1_PL1_WEBCAM_TOP_Photo\ on\ 1-27-20\ at\ 2.27\ PM.jpg 
+```
+
 # Instructions for Running each model separately: 
 ## Mask-RCNN Usage: 
 
