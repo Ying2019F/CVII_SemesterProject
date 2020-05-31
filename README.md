@@ -158,7 +158,8 @@ Details can be found on https://github.com/weiliu89/caffe
 1. python ssd_pascal_orig.py to train the model
 2. python score_ssd_pascal.py to evaluate the model
 
-NOte: For this project, different training schemes were implemented. There are two trained models in the google drive, including webcam model and Iphone model. The webcam model was trained on the images collected by webcam (Logitech, webcam c615) and Iphone model was trained on the images collected by Iphone.
+Note: For this project, different training schemes were implemented. There are two trained models in the google drive, including webcam model and Iphone model. The webcam model was trained on the images collected by webcam (Logitech, webcam c615) and Iphone model was trained on the images collected by Iphone. More training models and results are available in the project final report.
+
 ### Visualization
 1. install caffe
 2. download input dataset and pretrained models
@@ -166,10 +167,11 @@ NOte: For this project, different training schemes were implemented. There are t
 ### Evaluation of SSD on detecting objects in a dense clutter
 
 - Pros:
-     - Achieved high accuracy when the detection scenario (object size and layout) was similar to the training scenario
+     - Achieved high accuracy when the detection scenario (object size, position, and layout) is similar to the training scenario
      - Low requirement on training datasize, decent results can be obtained with even several training images
+     - Robust to large occlusions
 
 - Cons: 
-     - Complicated to install Caffe
-     - Low accuracy on new detection scenario
+     - Complicated to install Caffe due to lots of dependencies
+     - Low accuracy on new detection scenario or unseen scenario
      - Bad detections when the target object has similar color or pattern with the unrelated object
