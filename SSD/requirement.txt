@@ -1,0 +1,9 @@
+python/2.7.15
+cuda/10.0
+cudnn/7.4
+opencv/3.4
+intel/19.0
+tcl/8.6.8
+gcc/8.3.0
+hdf5/1.8.20-gcc
+mkl
